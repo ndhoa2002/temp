@@ -9,12 +9,13 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "district")
-public class DistrictEntity {
+@Table(name = "renttype")
+public class RenttypeEntity {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -25,33 +26,39 @@ public class DistrictEntity {
 	@Column(name = "name")
 	private String name;
 	
-	@OneToMany(mappedBy = "district", fetch = FetchType.LAZY)
+	@ManyToMany(mappedBy = "renttype", fetch = FetchType.LAZY)
 	private List<BuildingEntity> buildings = new ArrayList<>();
-	
-	
-	public List<BuildingEntity> getItems() {
-		return buildings;
-	}
-	public void setItems(List<BuildingEntity> items) {
-		this.buildings = items;
-	}
+
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public String getCode() {
 		return code;
 	}
+
 	public void setCode(String code) {
 		this.code = code;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public List<BuildingEntity> getBuildings() {
+		return buildings;
+	}
+
+	public void setBuildings(List<BuildingEntity> buildings) {
+		this.buildings = buildings;
 	}
 	
 	
