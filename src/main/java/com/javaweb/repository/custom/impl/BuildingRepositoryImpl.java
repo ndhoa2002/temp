@@ -1,4 +1,4 @@
-package com.javaweb.repository.impl;
+package com.javaweb.repository.custom.impl;
 
 import java.lang.reflect.Field;
 import java.sql.Connection;
@@ -17,12 +17,14 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Repository;
 
 import com.javaweb.builder.BuildingSearchBuilder;
 import com.javaweb.model.BuildingDTO;
 import com.javaweb.repository.BuildingRepository;
+import com.javaweb.repository.custom.BuildingRepositoryCustom;
 import com.javaweb.repository.entity.BuildingEntity;
 import com.javaweb.utils.ConnectionJDBCUtil;
 import com.javaweb.utils.NumberUtil;
@@ -30,7 +32,8 @@ import com.javaweb.utils.StringUtil;
 import com.mysql.cj.log.Log;
 
 @Repository
-public class JDBCBuildingRepositoryImpl implements BuildingRepository {
+@Primary
+public class BuildingRepositoryImpl implements BuildingRepositoryCustom{
 //	static final String DB_URL = "jdbc:mysql://localhost:3306/estatebasic";
 //	static final String USER = "root";
 //	static final String PASS = "callofduty12345";
@@ -120,11 +123,12 @@ public class JDBCBuildingRepositoryImpl implements BuildingRepository {
 			where.append(sql + ") ");
 		}
 	}
-	@Override
+//	@Override
 	public List<BuildingEntity> findAll(BuildingSearchBuilder buildingSearchBuilder) {
 
-		StringBuilder sql = new StringBuilder("SELECT b.id, b.name, b.districtid, b.street, b.ward, b.numberofbasement, "
-				+ "b.floorarea, b.rentprice, b.managername, b.managerphonenumber, b.servicefee, b.brokeragefee FROM building b ");
+//		StringBuilder sql = new StringBuilder("SELECT b.id, b.name, b.districtid, b.street, b.ward, b.numberofbasement, "
+//				+ "b.floorarea, b.rentprice, b.managername, b.managerphonenumber, b.servicefee, b.brokeragefee FROM building b ");
+		StringBuilder sql = new StringBuilder("SELECT b.* FROM building b ");
 		joinTable(buildingSearchBuilder, sql);
 		StringBuilder where = new StringBuilder(" WHERE 1=1 ");
 		queryNomal(buildingSearchBuilder, where);
