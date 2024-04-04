@@ -75,8 +75,8 @@ public class BuildingRepositoryImpl implements BuildingRepository {
 		if(staffId!=null) {
 			where.append(" AND assignmentbuilding.staffid = " + staffId);
 		}
-		Long rentAreaTo = buildingSearchBuilder.getRentPriceTo();
-		Long rentAreaFrom = buildingSearchBuilder.getRentPriceFrom();
+		Long rentAreaTo = buildingSearchBuilder.getAreaTo();
+		Long rentAreaFrom = buildingSearchBuilder.getAreaFrom();
 		if(rentAreaTo!=null || rentAreaFrom!=null) {
 			where.append(" AND EXISTS (SELECT * FROM rentarea r WHERE b.id = r.buildingid ");
 			if(rentAreaFrom!=null) {
@@ -133,6 +133,7 @@ public class BuildingRepositoryImpl implements BuildingRepository {
 //		sql.append("where 1 = 1 ");
 //		checkWhere(sql, params, typeCode);
 //		sql.append(" group by b.id");
+	
 		
 		List<BuildingEntity> result = new ArrayList<>();
 		try (Connection conn = ConnectionJDBCUtil.getConnection();
