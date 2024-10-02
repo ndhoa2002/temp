@@ -71,11 +71,21 @@ public class BuildingAPI {
 ////		}
 ////		valiDate(buildingDTO);
 ////		return null;
-//		
-//		
+//
+//
 //	}
 	@Autowired
 	private BuildingService buildingService;
+//test
+	@GetMapping(value = "/api/buildings/")
+	public void getBuilding(@RequestParam(value = "name") String name
+							,@RequestParam(value = "nob",required = false) Integer nob){
+		System.out.println(name + " " + nob);
+	}
+
+
+//done test
+
 	@GetMapping(value = "/api/building/")
 	public List<BuildingDTO> getBuilding(@RequestParam(value = "name", required = false) String name,
 										@RequestParam(value = "districtid", required = false) Long district,
