@@ -125,7 +125,7 @@ public class BuildingRepositoryImpl implements BuildingRepository {
 		List<BuildingEntity> result = new ArrayList<>();
 		try (Connection conn = ConnectionJDBCUtil.getConnection();
 				Statement stmt = conn.createStatement();
-				ResultSet rs = stmt.executeQuery(sql.toString());) {
+				ResultSet rs = stmt.executeQuery(sql.toString())) {
 			while (rs.next()) {
 				BuildingEntity buildingEntity = new BuildingEntity();
 				buildingEntity.setId(rs.getInt("id"));

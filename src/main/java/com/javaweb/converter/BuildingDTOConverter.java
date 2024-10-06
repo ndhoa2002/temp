@@ -39,10 +39,10 @@ public class BuildingDTOConverter {
 		
 		
 		List<RentareaEntity> rentareaEntities = rentAreaRepository.getRentAreaByValue(item.getId());
-		StringJoiner rentArea = new StringJoiner(",");
-		for(RentareaEntity re : rentareaEntities) {
-			rentArea.add(re.getValue().toString());
-		}
+//		StringJoiner rentArea = new StringJoiner(",");
+//		for(RentareaEntity re : rentareaEntities) {
+//			rentArea.add(re.getValue().toString());
+//		}
 		String areaResult = rentareaEntities.stream().map(it -> it.getValue().toString()).collect(Collectors.joining(","));
 		
 		buildingDTO.setRentArea(areaResult);
