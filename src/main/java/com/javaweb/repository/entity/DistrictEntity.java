@@ -24,11 +24,13 @@ public class DistrictEntity {
 	
 	@Column(name = "name")
 	private String name;
-	
-	@OneToMany(mappedBy = "district", fetch = FetchType.LAZY)
+
+
+
+		@OneToMany(mappedBy = "district", fetch = FetchType.LAZY)
 	private List<BuildingEntity> buildings = new ArrayList<>();
-	
-	
+
+
 	public List<BuildingEntity> getItems() {
 		return buildings;
 	}

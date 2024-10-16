@@ -21,12 +21,14 @@ public class RentareaEntity {
 	
 	@Column(name = "value")
 	private Integer value;
+
+
 	
 	@ManyToOne
 	@JoinColumn(name = "buildingid")
 	private BuildingEntity building;
-	
-	
+
+
 	public BuildingEntity getBuilding() {
 		return building;
 	}

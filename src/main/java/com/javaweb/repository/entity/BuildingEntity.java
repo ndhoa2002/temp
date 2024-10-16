@@ -21,129 +21,129 @@ import javax.persistence.Table;
 @Entity
 @Table(name="building")
 public class BuildingEntity {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@Column(name = "name")
 	private String name;
-	
+
 	@Column(name = "floorarea")
 	private Integer floorArea;
-	
+
 //	@Column(name = "districtid")
 //	private Integer districtid;
-	
+
 	@Column(name = "ward")
 	private String ward;
-	
+
 	@Column(name = "structure")
 	private String structure;
-	
+
 	@Column(name = "servicefee")
 	private String serviceFee;
-	
+
 	@Column(name = "carfee")
 	private String carFee;
-	
+
 	@Column(name = "motorbikefee")
 	private String motorbikeFee;
-	
+
 	@Column(name = "overtimefee")
 	private String overTimeFee;
-	
+
 	@Column(name = "waterfee")
 	private String waterFee;
-	
+
 	@Column(name = "electricityfee")
 	private String electricityFee;
-	
+
 	@Column(name = "deposit")
 	private String deposit;
-	
+
 	@Column(name = "payment")
 	private String payment;
-	
+
 	@Column(name = "renttime")
 	private String rentTime;
-	
+
 	@Column(name = "decorationtime")
 	private String decorationTime;
-	
+
 	@Column(name = "brokeragefee")
 	private Float brokerageFee;
-	
+
 	@Column(name = "note")
 	private String note;
-	
+
 	@Column(name = "linkofbuilding")
 	private String linkOfBuilding;
-	
+
 	@Column(name = "map")
 	private String map;
-	
+
 	@Column(name = "image")
 	private String image;
-	
+
 	@Column(name = "createddate")
 	private Date createdDate;
-	
+
 	@Column(name = "modifieddate")
 	private Date modifiedDate;
-	
+
 	@Column(name = "createdby")
 	private String createdBy;
-	
+
 	@Column(name = "modifiedby")
 	private String modifiedBy;
-	
+
 	@Column(name = "street")
 	private String street;
-	
+
 	@Column(name = "numberofbasement")
 	private Integer numberOfBasement;
-	
+
 	@Column(name = "direction")
 	private String direction;
-	
+
 	@Column(name = "level")
 	private Integer level;
-	
+
 	@Column(name = "rentprice")
 	private Integer rentPrice;
-	
+
 	@Column(name = "managername")
 	private String managerName;
-	
+
 	@Column(name = "managerphonenumber")
 	private String managerPhoneNumber;
-	
-	
+
+
 //	private Integer empyArea;
-	
+
 
 //	private Integer serviceFee;
 //	private Integer brokerageFee;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "districtid")
 	private DistrictEntity district;
-	
+
 	@OneToMany(mappedBy = "building", fetch = FetchType.LAZY)
 	private List<RentareaEntity> items = new ArrayList<>();
-	
+
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "buildingrenttype",
 			joinColumns = @JoinColumn(name = "buildingid", nullable = false),
 			inverseJoinColumns = @JoinColumn(name = "renttypeid", nullable = false))
 	private List<RenttypeEntity> renttype = new ArrayList<>();
-	
+
 	@OneToMany(mappedBy = "building", fetch = FetchType.LAZY)
 	private List<AssignmentBuildingEntity> assignmentBuildingEntities = new ArrayList<>();
-	
-	
-	
+
+
+
 	public List<AssignmentBuildingEntity> getAssignmentBuildingEntities() {
 		return assignmentBuildingEntities;
 	}
@@ -221,7 +221,7 @@ public class BuildingEntity {
 //	}
 //	public void setLevel(Integer level) {
 //		this.level = level;
-//	}	
+//	}
 	public String getManagername() {
 		return managerName;
 	}
@@ -402,6 +402,6 @@ public class BuildingEntity {
 	public void setLevel(Integer level) {
 		this.level = level;
 	}
-	
-	
+
+
 }

@@ -18,22 +18,22 @@ public class AssignmentBuildingEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@Column(name = "staffid")
 	private Integer staffId;
-	
+
 	@Column(name = "createddate")
 	private Date createdDate;
-	
+
 	@Column(name = "modifieddate")
 	private Date modifiedDate;
-	
+
 	@Column(name = "createdby")
 	private String createdBy;
-	
+
 	@Column(name = "modifiedby")
 	private String modifiedBy;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "buildingid")
 	private BuildingEntity building;
@@ -93,6 +93,6 @@ public class AssignmentBuildingEntity {
 	public void setBuilding(BuildingEntity building) {
 		this.building = building;
 	}
-	
-	
+
+
 }

@@ -13,6 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -118,7 +119,7 @@ public class BuildingAPI {
 	@PutMapping(value = "/api/building/")
 	public void updateBuilding(@RequestBody BuildingRequestDTO buildingRequestDTO) {
 		BuildingEntity buildingEntity = new BuildingEntity();
-		buildingEntity.setId(1);
+		buildingEntity.setId(6);
 		buildingEntity.setName(buildingRequestDTO.getName());
 		buildingEntity.setStreet(buildingRequestDTO.getStreet());
 		buildingEntity.setWard(buildingRequestDTO.getWard());
@@ -149,6 +150,6 @@ public class BuildingAPI {
 //		System.out.println(data);
 		BuildingEntity buildingEntity = entityManager.find(BuildingEntity.class, id);
 		entityManager.remove(buildingEntity);
-		
+
 	}
 }
