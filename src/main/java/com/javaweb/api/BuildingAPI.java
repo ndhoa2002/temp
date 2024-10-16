@@ -113,6 +113,14 @@ public class BuildingAPI {
 		List<BuildingEntity> building = buildingRepository.findByNameContainingAndStreet(name, street);
 		return result;
 	}
+
+
+	@GetMapping(value = "/api/building/{id}")
+	public BuildingDTO getBuildingById(@PathVariable Integer id){
+		BuildingDTO result = new BuildingDTO();
+		BuildingEntity building = buildingRepository.findById(id).get();
+		return result;
+	}
 	
 	@PostMapping(value = "/api/building/")
 	public void createBuilding(@RequestBody BuildingRequestDTO buildingRequestDTO) {
